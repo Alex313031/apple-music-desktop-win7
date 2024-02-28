@@ -1,0 +1,55 @@
+{
+  "name": "apple-music-desktop",
+  "appName": "Apple Music",
+  "productName": "Apple Music",
+  "applicationId": "com.alex313031.apple-music-desktop",
+  "version": "2.1.2",
+  "description": "An Electron app that provides a native Apple Music experience for Linux & Windows.",
+  "author": "Alex313031",
+  "license": "BSD-3-Clause",
+  "copyright": "Copyright © 2024 Alex313031",
+  "repository": "https://github.com/Alex313031/apple-music-desktop",
+  "main": "./src/app.js",
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "test": "npm run eslint ; npm run stylelint",
+    "lint": "npm run eslint ; npm run stylelint",
+    "clean": "rimraf dist/ && rimraf test/ && rimraf src/node_modules/ && rimraf node_modules/",
+    "distclean": "rimraf dist",
+    "burn": "rimraf package-lock.json && rimraf ./src/package-lock.json",
+    "build": "electron-builder --dir",
+    "buildWin": "electron-builder -w --x64 --dir && electron-builder -w --ia32 --dir",
+    "buildMac": "electron-builder -m --dir",
+    "dist": "electron-builder",
+    "distLinux": "electron-builder -l",
+    "distWin": "electron-builder -w --x64 --pd dist/win-unpacked && electron-builder -w --ia32 --pd dist/win-ia32-unpacked",
+    "distMac": "electron-builder -m --pd dist/mac",
+    "eslint": "eslint \"src/**/*.js*\"",
+    "stylelint": "stylelint \"src/**/*.css*\"",
+    "start": "electron ./src",
+    "winstart": "electron src",
+    "dev": "NODE_ENV=development electron --enable-logging=file --user-data-dir=./test ./src",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@electron/remote": "2.1.2",
+    "electron-context-menu": "3.6.1",
+    "electron-log": "5.1.1",
+    "electron-store": "8.1.0"
+  },
+  "devDependencies": {
+    "asar": "3.2.0",
+    "electron": "git+https://github.com/castlabs/electron-releases#v22.3.27+wvcus",
+    "electron-builder": "23.6.0",
+    "electron-util": "0.17.2",
+    "eslint": "8.44.0",
+    "rimraf": "3.0.2",
+    "stylelint": "14.16.1",
+    "stylelint-config-standard": "29.0.0"
+  },
+  "resolutions": {
+    "electron": "git+https://github.com/castlabs/electron-releases#v22.3.27+wvcus"
+  }
+}
